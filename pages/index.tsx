@@ -72,8 +72,8 @@ export default ({ score }) => {
           Scoreboard Earth Intruders
         </div>
       </div>
-      <div className="w-full text-center bg-gray-800 text-white font-retro flex flex-wrap items-center justify-center">
-        <div className="space-x-4 mb-4">
+      <div className="w-full text-center bg-gray-800 text-white font-retro flex flex-wrap items-center justify-center mb-4">
+        <div className="space-x-4">
           <button className="btn">Ordenar por ID</button>
           <button className="btn">Ordenar por Puntuación</button>
           <button className="btn">Ordenar por Duración</button>
@@ -87,37 +87,28 @@ export default ({ score }) => {
         />
       </div>
       <div className="bg-gray-900 py-10 text-white font-retro">
-        {filteredScores.sort(compareScores).map(({ id, name, puntuacion, duracion, date }) => (
-          <div
-            className="flex bg-gray-800 shadow-lg rounded-lg mx-2 md:mx-auto mb-10 max-w-2xl"
-            key={id}
-          >
-            <div className="flex items-start px-4 py-6">
-              <div className="">
-                <div className="inline items-center justify-between">
-                  <h2 className="text-lg font-bold text-gray-200 -mt-1">
-                    {id}
-                  </h2>
-                  <small className="text-sm text-gray-400 object-right">
-                    Id: {id}
-                  </small>
-                  <small className="ml-3 text-gray-400 text-sm">
-                    Name: {name}
-                  </small>
-                  <small className="ml-3 text-gray-400 text-sm">
-                    Puntuacion: {puntuacion}
-                  </small>
-                  <small className="ml-3 text-gray-400 text-sm">
-                    Duracion: {duracion}
-                  </small>
-                  <small className="ml-3 text-gray-400 text-sm">
-                    Date: {date.toString().substring(0, 10)}
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
+        <table className="mx-auto max-w-2xl">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nombre</th>
+              <th>Puntuación</th>
+              <th>Duración</th>
+              <th>Fecha</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredScores.sort(compareScores).map(({ id, name, puntuacion, duracion, date }) => (
+              <tr key={id}>
+                <td>{id}</td>
+                <td>{name}</td>
+                <td>{puntuacion}</td>
+                <td>{duracion}</td>
+                <td>{date.toString().substring(0, 10)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
