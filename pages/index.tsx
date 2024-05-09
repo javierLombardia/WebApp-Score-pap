@@ -108,7 +108,7 @@ export default ({ score }) => {
                     Puntuacion: {puntuacion}
                   </small>
                   <small className="ml-3 text-gray-700 text-sm">
-                    Duracion: {duracion}
+                    Duracion (en segundos) : {duracion}
                   </small>
                   <small className="ml-3 text-gray-700 text-sm">
                     Date: {date.toString().substring(0,10)}
