@@ -50,7 +50,6 @@ export default ({ score }) => {
   );
 
   return (
-
     <div>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -68,50 +67,51 @@ export default ({ score }) => {
           content="Lista de mejores partidas de Earth Intruders"
         />
       </Head>
-      <div className="w-full text-center bg-blue-800 flex flex-wrap items-center">
-        <div className="text-3xl w-1/2 text-white mx-2 md:mx-auto py-10">
+      <div className="w-full text-center bg-gray-800 text-white font-retro">
+        <div className="text-3xl py-10">
           Scoreboard Earth Intruders
         </div>
-
-        {/* Botones para ordenar por diferentes criterios */}
-        <button onClick={() => sortScores('id')}>Ordenar por ID</button>
-        <button onClick={() => sortScores('puntuacion')}>Ordenar por Puntuación</button>
-        <button onClick={() => sortScores('duracion')}>Ordenar por Duración</button>
-        
-        {/* Barra de búsqueda */}
+      </div>
+      <div className="w-full text-center bg-gray-800 text-white font-retro flex flex-wrap items-center justify-center">
+        <div className="space-x-4 mb-4">
+          <button className="btn">Ordenar por ID</button>
+          <button className="btn">Ordenar por Puntuación</button>
+          <button className="btn">Ordenar por Duración</button>
+        </div>
         <input
+          className="border border-white rounded py-2 px-4 mr-2"
           type="text"
           placeholder="Buscar por nombre"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <div className="bg-gray-200 py-10">
-        {score.sort(compareScores).map(({id, name, puntuacion, duracion, date}) => ( //la queremos en date o tiempo de partida
+      <div className="bg-gray-900 py-10 text-white font-retro">
+        {filteredScores.sort(compareScores).map(({ id, name, puntuacion, duracion, date }) => (
           <div
-            className="flex bg-white shadow-lg rounded-lg mx-2 md:mx-auto mb-10 max-w-2xl"
+            className="flex bg-gray-800 shadow-lg rounded-lg mx-2 md:mx-auto mb-10 max-w-2xl"
             key={id}
           >
             <div className="flex items-start px-4 py-6">
               <div className="">
                 <div className="inline items-center justify-between">
-                  <h2 className="text-lg font-bold text-gray-900 -mt-1">
+                  <h2 className="text-lg font-bold text-gray-200 -mt-1">
                     {id}
                   </h2>
-                  <small className="text-sm text-gray-700 object-right">
+                  <small className="text-sm text-gray-400 object-right">
                     Id: {id}
                   </small>
-                  <small className="ml-3 text-gray-700 text-sm">
+                  <small className="ml-3 text-gray-400 text-sm">
                     Name: {name}
                   </small>
-                  <small className="ml-3 text-gray-700 text-sm">
+                  <small className="ml-3 text-gray-400 text-sm">
                     Puntuacion: {puntuacion}
                   </small>
-                  <small className="ml-3 text-gray-700 text-sm">
-                    Duracion (en segundos) : {duracion}
+                  <small className="ml-3 text-gray-400 text-sm">
+                    Duracion: {duracion}
                   </small>
-                  <small className="ml-3 text-gray-700 text-sm">
-                    Date: {date.toString().substring(0,10)}
+                  <small className="ml-3 text-gray-400 text-sm">
+                    Date: {date.toString().substring(0, 10)}
                   </small>
                 </div>
               </div>
